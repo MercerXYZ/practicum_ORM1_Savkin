@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Здания и сооружения</title>
+</head>
+<body>
+
+  <h1>Самые высокие здания и сооружения</h1>
+
+  {# Самостоятельное задание 4: навигация между таблицами #}
+  <nav>
+    <a href="#type_building">Типы зданий</a>
+    <a href="#buildings">Здания</a>
+    <a href="#cities">Города</a>
+    <a href="#countries">Страны</a>
+    <a href="#stats_type">Статистика по типам</a>
+    <a href="#stats_country">Статистика по странам</a>
+  </nav>
+
+  {# Самостоятельное задание 1: макрос для вывода таблицы #}
+  {% macro render_table(head, body) %}
+  <table>
+    <thead>
+      <tr>
+        {% for item in head %}
+          <th>{{ item }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in body %}
+        <tr>
+          {% for item in row %}
+            <td>{{ item }}</td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endmacro %}
+
+  {# Задание 2: таблица type_building #}
+  <section id="type_building">
+    <h2>Типы зданий</h2>
+    {{ render_table(type_buildings_head, type_buildings_body) }}
+  </section>
+
+  {# Самостоятельное задание 2: остальные таблицы с названиями вместо внешних ключей #}
+  <section id="buildings">
+    <h2>Здания и сооружения</h2>
+    {{ render_table(buildings_head, buildings_body) }}
+  </section>
+
+  <section id="cities">
+    <h2>Города</h2>
+    {{ render_table(cities_head, cities_body) }}
+  </section>
+
+  <section id="countries">
+    <h2>Страны</h2>
+    {{ render_table(countries_head, countries_body) }}
+  </section>
+
+  {# Самостоятельное задание 3: статистика с группировкой #}
+  <section id="stats_type">
+    <h2>Статистика по типам зданий</h2>
+    {{ render_table(stats_type_head, stats_type_body) }}
+  </section>
+
+  <section id="stats_country">
+    <h2>Статистика по странам</h2>
+    {{ render_table(stats_country_head, stats_country_body) }}
+  </section>
+
+</body>
+</html>

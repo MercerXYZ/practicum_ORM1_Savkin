@@ -1,0 +1,22 @@
+table {
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 4px 8px;
+    text-align: left;
+}
+
+nav {
+    margin-bottom: 20px;
+}
+
+nav a {
+    margin-right: 10px;
+}
+
+section {
+    margin-bottom: 30px;
+}
